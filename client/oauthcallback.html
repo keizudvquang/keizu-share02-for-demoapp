@@ -1,0 +1,85 @@
+<html>
+    <head>
+    <script src="lib/js/jquery.js"></script>
+    <script src="lib/js/jquery.min.js"></script>
+    </head>
+<body>
+<script>
+
+    var url = window.location.href
+    var origin = window.location.protocol + '//' + window.location.hostname
+    getAccessTokenLINE()
+    
+    function getAccessTokenLINE() {
+        var queryString, obj;
+
+        if (url.indexOf("code=") > 0) {
+            queryString = url.substr(url.indexOf('?') + 1);
+            obj = parseQueryString(queryString);
+            var authorizationCode = obj['code'];
+
+            $.ajax({
+                url: origin + '/lineAPI/getAccessTokenLINE',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    code: authorizationCode
+                },
+                success: getUserProfileLINE,
+                error: handleError
+            })
+        } else if (url.indexOf("error=") > 0) {
+            window.location.href = origin + '/#/app/login'
+        } else {
+            window.location.href = origin + '/#/app/login'
+        }
+    }
+
+    function getUserProfileLINE(data) {
+        $.ajax({
+            url: origin + '/lineAPI/getUserProfileLINE',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                lineToken: data['access_token']
+            },
+            success: loginLINE,
+            error: handleError
+        })
+    }
+
+    function loginLINE(lineUser) {
+        $.ajax({
+            url: origin + '/lineAPI/loginLINE',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                lineUser: lineUser
+            },
+            success: function(data) {
+                window.localStorage.user = JSON.stringify(data.user);
+                window.localStorage.token = data.token;
+                window.location.href = origin + '/#/app/profile'
+            },
+            error: handleError
+        })
+    }
+
+    function parseQueryString(queryString) {
+        var qs = decodeURIComponent(queryString),
+            obj = {},
+            params = qs.split('&');
+        params.forEach(function (param) {
+            var splitter = param.split('=');
+            obj[splitter[0]] = splitter[1];
+        });
+        return obj;
+    }
+
+    function handleError(jqXHR, exception) {
+        alert(jqXHR)
+        window.location.href = origin + '/#/app/login'
+    }
+</script>
+</body>
+</html>

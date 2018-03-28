@@ -1,0 +1,69 @@
+{
+    "name": "Keizu Demo-app",
+    "description": "株式会社ケイズコーポレーションのデモアプリです。",
+    "logo": "https://www.keizu.co.jp/wp-content/themes/kz/images/logo.png",
+    "addons": [
+        "heroku-postgresql:hobby-dev",
+        "herokuconnect:demo",
+        "cloudinary:starter",
+        "scheduler:standard"
+    ],
+    "env": {
+        "INTEGRATION_USER_NAME": {
+            "description": "Your Salesforce Developer Edition Username",
+            "value": ""
+        },
+        "INTEGRATION_USER_PASSWORD": {
+            "description": "Your Salesforce Developer Edition Password",
+            "value": ""
+        },
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client-id for Your Connected Apps",
+            "value": ""
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client-secret for Your Connected Apps",
+            "value": ""
+        },
+        "OAUTH_REDIRECT_URL": {
+            "description": "OAuth redirect-url for Your Connected Apps",
+            "value": "https://login.salesforce.com/"
+        },
+        "PRODUCT_FAMILY": {
+            "description": "input product family",
+            "value": "Nibs"
+        },
+        "LINE_CHANNEL_ID": {
+            "description": "LINE channel id",
+            "value": ""
+        },
+        "LINE_CHANNEL_SECRET": {
+            "description": "LINE channel secret",
+            "value": ""
+        },
+        "LINE_LOGIN_URL": {
+            "description": "LINE login url",
+            "value": "https://access.line.me/dialog/oauth/weblogin"
+        },
+        "LINE_GET_TOKEN_URL": {
+            "description": "LINE get token url",
+            "value": "https://api.line.me/v2/oauth/accessToken"
+        },
+        "LINE_GET_PROFILE_URL": {
+            "description": "LINE get user profile url",
+            "value": "https://api.line.me/v2/profile"
+        },
+        "LINE_CALLBACK_URL": {
+            "description": "LINE call back url",
+            "value": ""
+        },
+        "SFORCE_GET_FAQ_URL": {
+            "description": "Salesforce REST API Query Endpoint",
+            "value": "/services/data/v40.0/query"
+        },
+        "SFORCE_GET_TOKEN_URL": {
+            "description": "Salesforce OAUTH2 get Token",
+            "value": "https://login.salesforce.com/services/oauth2/token"
+        }
+    }
+}

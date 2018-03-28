@@ -1,0 +1,44 @@
+<ion-view title="設定" hide-back-button="true" class="settings card-bg">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true">
+
+        <div class="list">
+
+<!--
+            <div class="item item-body">
+                <p>{{server.url}}</p>
+                <p>Regular logout for regular and Facebook users.</p>
+                <button class="button button-block button-light" ng-click="logout()">
+                    Logout
+                </button>
+            </div>
+            <div class="item item-body">
+                <p>Completely deauthorize Facebook user. You'll be asked for full Facebook credentials again.</p>
+                <button class="button button-block button-light" ng-click="logoutAndRevoke()">
+                    Logout and Revoke Permissions
+                </button>
+            </div>
+-->
+
+            <div class="item item-body">
+                <p>お気に入りの特典、希望商品リスト、最近の活動を全削除します。</p>
+                <button class="button button-block button-light" ng-click="deleteActivities()">
+                    削除
+                </button>
+            </div>
+            <div class="item item-body">
+                <p>ギャラリーの写真を全削除します。</p>
+                <button class="button button-block button-light" ng-click="deletePictures()">
+                    削除
+                </button>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>
