@@ -14,10 +14,18 @@
     <div id="map" style="width: 100%;height: 66%;"></div>
 
     <div class="item item-divider">
-        登録されているお店の場所
+        <span ng-show="!isDisplaySearch">
+            <label>登録されているお店の場所</label>
+            <i class="icon ion-search" ng-click="displaySearch(true)" style="float: right;"></i>
+        </span>
+        <span ng-show="isDisplaySearch">
+            <i class="icon ion-arrow-left-c" ng-click="displaySearch(false)" style="float: left; margin-right: 10px;"></i>
+            <input type="text" placeholder="検索: お店の名前を入力" ng-model="storeNameFilter" style="height: 20px; float: left; width: 85%;" />
+            <i class="icon ion-close" ng-click="clearSearch()" style="float: right;"></i>
+        </span>
     </div>
     <ul class="list" style="height: 29%; overflow: scroll;">
-        <li class="item" ng-repeat="store in stores | orderBy: paramOrder | limitTo: numLimit" ng-click="showLocation([store.latitude, store.longitude])">
+        <li class="item" ng-repeat="store in stores | orderBy: paramOrder | limitTo: numLimit | filter: storeNameFilter" ng-click="showLocation([store.latitude, store.longitude])">
             {{store.name}}
         </li>
     </ul>
