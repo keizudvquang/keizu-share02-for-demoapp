@@ -31,8 +31,6 @@ angular.module('nibs.store-locator', [])
 
         $scope.numLimit = 10;
         $scope.paramOrder = '+name';
-        $scope.storeNameFilter = '';
-        $scope.isDisplaySearch = false;
 
         var map,
             currentPosMarker,
@@ -108,14 +106,4 @@ angular.module('nibs.store-locator', [])
             $scope.showLocation(pos);
         }
 
-        $scope.displaySearch = function (value){
-            $scope.isDisplaySearch = value;
-            if (value == false){
-                $scope.storeNameFilter = '';
-            }
-        }
-
-        $scope.clearSearch = function (){
-            $scope.storeNameFilter = '';
-        }
     });
